@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -25,6 +26,14 @@ public class UserService {
     // R ////////////////////
     public List<User> read() {
        return userRepository.findAll();
+    }
+
+    public User findById(int id) {
+        Optional<User> userToDelete = userRepository.findById(id);
+        if (userToDelete.isPresent()) {
+            return userToDelete.get();
+        }
+        return null;
     }
 
     // U ////////////////////
@@ -55,6 +64,15 @@ public class UserService {
             } else {
                 return false;
             }
+        } else {
+            return false;
+        }
+    }
+
+    public boolean mailExists(User user) {
+        Optional<User> userToFind = userRepository.findByEmail(user.getEmail());
+        if (userToFind.isPresent()) {
+            return true;
         } else {
             return false;
         }
