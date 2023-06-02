@@ -42,12 +42,12 @@ function List() {
                     <tbody>
                         {usersList.map(element => {
                             return (
-                                <tr>
+                                <tr className='align-middle'>
                                     <th scope="row">{element.id}</th>
                                     <td>{element.nom}</td>
                                     <td>{element.prenom}</td>
                                     <td>{element.email}</td>
-                                    <td><a onClick={() => deleteUser(element.id)}>Supp</a></td>
+                                    <td><a className='btn btn-danger' onClick={() => deleteUser(element.id)}><i class="bi bi-trash3-fill"></i></a></td>
                                 </tr>
                             )
                         })}
