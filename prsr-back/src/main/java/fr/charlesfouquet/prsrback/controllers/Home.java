@@ -35,6 +35,11 @@ public class Home {
         return userService.read();
     }
 
+    @GetMapping("/{id}")
+    public User home(@PathVariable int id) {
+        return userService.findById(id);
+    }
+
     @PutMapping("/")
     public ResponseEntity<String> update(@RequestBody User user) {
         user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
