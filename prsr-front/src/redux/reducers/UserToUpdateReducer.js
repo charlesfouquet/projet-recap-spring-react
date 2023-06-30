@@ -1,4 +1,4 @@
-const reducer = (state = {id:0, nom:"a", prenom:"b", email: "c", password:"d"}, action) => {
+const reducer = (state = {id:0, nom:"", prenom:"", email: "", password:""}, action) => {
     switch (action.type) {
         case "update":
             return action.payload;

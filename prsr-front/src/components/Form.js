@@ -6,12 +6,17 @@ import { useSelector, useDispatch } from 'react-redux';
 function Form() {
     const [message, setMessage] = useState([]);
     const userToUpdate = useSelector(state => state.userToUpdate);
-    const [formUser, setFormUser] = useState(userToUpdate);
+    const [formUser, setFormUser] = useState({...userToUpdate});
 
     useEffect(() => {
-        setFormUser(userToUpdate);
+        setFormUser({...userToUpdate});
+        setFormUser({
+            ...userToUpdate,
+            id: 0
+        })
+        console.log(formUser);
     }, [userToUpdate])
-
+    
     const onChange = e => {
         setFormUser({
             ...formUser,
